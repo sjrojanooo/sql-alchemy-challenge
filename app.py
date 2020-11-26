@@ -81,6 +81,18 @@ def percipitation():
     #Jsonify results
     return jsonify(precipitation)
 
+@app.route("/api/v1.0/stations")
+def stations():
+    """
+    Returning the all Stations 
+    """
+    station_list = session.query(station.name).all()
+    
+    jsonify_sation = list(np.ravel(station_list))
+    
+    #Jsonify results 
+    return jsonify(jsonify_sation)
+
 if __name__ == "__main__":
     app.run(debug=True)
     
